@@ -524,6 +524,7 @@ define(function(require){
 
 		portBindScheduledDatePopupEvents: function(parent, popup, args) {
 			var self = this,
+				$timezoneSelect = popup.find('#timezone'),
 				$timepicker = popup.find('#scheduled_time'),
 				$datepicker = popup.find('#scheduled_date'),
 				datepickerOptions = {
@@ -538,6 +539,17 @@ define(function(require){
 				var scheduledTimeInMiliSeconds = $timepicker.timepicker('getSecondsFromMidnight') * 1000,
 					scheduledDateInMiliSeconds = $datepicker.datepicker('getDate').getTime(),
 					newScheduledDate = monster.util.dateToGregorian(new Date(scheduledDateInMiliSeconds + scheduledTimeInMiliSeconds));
+
+				var date = $datepicker.datepicker('getDate'),
+					time = $timepicker.timepicker('getSecondsFromMidnight') / 60,
+					year = date.getFullYear(),
+					month = date.getMonth(),
+					day = date.getDate(),
+					hours = Math.floor(time / 60),
+					minutes = time % 60,
+					timezone = $timezoneSelect.val();
+
+				console.log(year, month, day, hours, minutes, timezone);
 
 				popup.dialog('close');
 
