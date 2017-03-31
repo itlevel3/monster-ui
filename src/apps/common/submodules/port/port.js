@@ -3,6 +3,7 @@ define(function(require){
 		_ = require('underscore'),
 		fileUpload = require('fileupload'),
 		monster = require('monster'),
+		timezone = require('monster-timezone'),
 		toastr = require('toastr');
 
 	var app = {
@@ -507,6 +508,15 @@ define(function(require){
 					beforeClose: function (event, ui) {
 						args.hasOwnProperty('callbackCancel') && args.callbackCancel();
 					}
+				}),
+				$timezoneSelect = popup.find('#timezone');
+
+			timezone.populateDropdown($timezoneSelect);
+
+			$timezoneSelect
+				.chosen({
+					search_contains: true,
+					width: '220px'
 				});
 
 			self.portBindScheduledDatePopupEvents(parent, popup, args);

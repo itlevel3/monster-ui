@@ -405,6 +405,7 @@
 			"scheduledDatePopup": {
 				"title": "Edit Scheduled Date",
 				"label": {
+					"timezone": "Scheduled timezone",
 					"scheduledDate": "Scheduled date",
 					"__comment": "UI-1753: Add ability to customize the time when setting a scheduled date",
 					"__version": "3.21",
